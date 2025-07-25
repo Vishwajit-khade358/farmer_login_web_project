@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Print the Form</title>
+  <link rel="stylesheet" href="1st.css">
+  <style>
+    body{
+      background-image: url(Kastakar.png);
+      background-repeat: no-repeat;
+      background-size: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Shetkari Application Summery</h1>
+    <div class="field"><span class="label">Farmer's Name: </span> <span id="farmerName"></span></div>
+    <div class="field"><span class="label">Village: </span> <span id="village"></span></div>
+    <div class="field"><span class="label">Adhaar Number: </span> <span id="adhar"></span></div>
+    <div class="field"><span class="label">Farm Area (Acre): </span> <span id="acre"></span></div>
+    <div class="field"><span class="label">Taluka: </span> <span id="taluka"></span></div>
+    <div class="field"><span class="label">Farm Registration Number: </span> <span id="farmReg"></span></div>
+    <div class="field"><span class="label">Your Crop : </span> <span id="crop"></span></div>
+    <div class="field"><span class="label">Irrigation Type: </span> <span id="irrigation"></span></div>
+    <div class="field"><span class="label">Yearly Income: </span> <span id="income"></span></div>
+    <div class="field">
+      <!-- <span class="label">Farmer's Photo:</span><br> -->
+      <img id="farmerPhoto" src="" alt="Farmer's Photo" width="150" height="150" style="border:1px solid #000; padding:5px;">
+    </div>
+
+    <button onclick="window.print()">Print</button>
+  </div>
+  
+
+  <script>
+   document.getElementById("farmerName").textContent = localStorage.getItem("farmerName");
+document.getElementById("village").textContent = localStorage.getItem("village");
+document.getElementById("adhar").textContent = localStorage.getItem("adhar");
+document.getElementById("acre").textContent = localStorage.getItem("acre");
+document.getElementById("taluka").textContent = localStorage.getItem("taluka");
+document.getElementById("farmReg").textContent = localStorage.getItem("farmReg");
+document.getElementById("crop").textContent = localStorage.getItem("crop");
+
+document.getElementById("irrigation").textContent = localStorage.getItem("irrigation");
+document.getElementById("income").textContent = localStorage.getItem("income");
+
+// Set photo
+const imgData = localStorage.getItem("farmerPhoto");
+if (imgData) {
+  document.getElementById("farmerPhoto").src = imgData;
+}
+  </script>
+</body>
+</html>
