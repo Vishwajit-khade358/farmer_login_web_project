@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AaplaKastakar.com</title>
+    <link rel="stylesheet" href="1st.css">
+</head>
+<body>
+    <script>
+        function savePage2Data() {
+          const irr = document.querySelector('input[name="irr"]:checked');
+          localStorage.setItem("farmReg", document.querySelector('input[type="number"]').value);
+          localStorage.setItem("irrigation", irr ? irr.value : '');
+          localStorage.setItem("income", document.querySelectorAll('input[type="number"]')[1].value);
+          localStorage.setItem("crop", document.querySelector('select').value);
+
+        }
+        </script>
+    <form onsubmit="savePage2Data(); return true;" action="final.html">
+    <div><br>
+        <b>Your Farm registration Number :-</b> 
+        <input type="number">
+    </div>
+</div>
+<br>
+<div>
+    <label for="a">Select your crop</label>
+    <select>
+        <option  id="a" name="crop" name="cr">Soyabean</option>
+        <option id="a" name="crop" name="cr">Red Gram</option>
+        <option id="a" name="crop" name="cr">Gram</option>
+        <option id="a" name="crop" name="cr">Cotton</option>
+        <option id="a" name="crop" name="cr">Jowar</option>
+        <option id="a" name="crop" name="cr">Bajri</option>
+    </select>
+</div>
+<div>
+   <b> Source of Irrigation :- </b><br>
+    <input type="radio" id="ir" name="irr" value="Cannel">
+    <label for="ir"><b>Cannel</b></label>
+    <input type="radio" id="ir" name="irr" value="Well">
+    <label for="ir"><b>Well</b></label>
+</div><br>
+<div>
+   <b> Way of Irrigation </b><br>
+    <input type="radio" id="i" name="i" value="Sprinkle">
+    <label for="i"><b>Sprinkle</b></label>
+    <input type="radio" id="i" name="i" value="Drip">
+    <label for="i"><b>Drip-Irrigation</b></label>
+<div><br>
+<b>Your Yearly Income (as per latest document) :- </b>
+<input type="number"><br><br>
+<b>Upload Current Year Income certificate here :-</b>
+<input type="file" placeholder="file must be in pdf,png or jpg format">
+</div><br>
+<div>
+    <label for="p1"><b>Upload crop image 1</b></label>
+    <input type="file" id="p1" name="p">
+    <label for="p1"><b>Upload crop image 2</b></label>
+    <input type="file" id="p1" name="p">
+</div>
+<button type="submit">Submit</button><br><br>
+<button type="reset">Reset</button>
+</form>
+
+</body>
+</html>
