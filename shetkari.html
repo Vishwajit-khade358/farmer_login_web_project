@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AaplaKastakar.com</title>
+    <link rel="stylesheet" href="1st.css"
+</head>
+<body>
+    <h1><b>Farmers Crop Information Form</b></h1>
+    <form onsubmit="savePage1Data(); return true;" action="2nd.html">
+        <label for="name"><b>Farmer's Name :- </b></label>
+        <input type="name" id="name" ><br><br>
+
+        <label for="village"><b>Name of Village :- </b></label>
+        <input type="text" id="village" ><br><br>
+
+        <label><b>Adhaar Number :-</b></label>
+        <input type="text" name="adhar" placeholder="Adhaar Number" pattern="\d{10}" maxlength="10" required
+        oninvalid="this.setCustomValidity('Please enter exactly 10 digits')"
+       oninput="this.setCustomValidity('')"><span id="error-message" style="color: red;"></span><br>
+        <div><br>
+            <label><b>Enter Your Farm area in Acre :-</b> </label>
+            <input type="number" name="acre" step="any">
+        </div>
+        <br>
+        <hr>
+        <div>
+            <label for="tal"><b>Select Your Taluka</b></label>
+            <select>
+                <option id="tal" name="taluka">Select Taluka</option>
+                <option id="tal" name="taluka" name="tal">Mangrulpir</option>
+                <option id="tal" name="taluka" name="tal">Karanja</option>
+                <option id="tal" name="taluka" name="tal">Akola</option>
+                <option id="tal" name="taluka" name="tal">Akot</option>
+                <option id="tal" name="taluka" name="tal">Washim</option>
+                <option id="tal" name="taluka" name="tal">Yavatmal</option>
+                <option id="tal" name="taluka" name="tal">Chandrapur</option>
+            </select></div>
+            <br>
+            <div>
+              <b>Upload your Profile Photo here</b><br>
+            <input type="file" name="farmerPhoto" value="im" id="img" placeholder="Upload your Image here"><br>
+        <button type="submit"><b>Submit</b></button><br><br>
+        <button type="reset"><b>Reset</b></button></div>
+    </form>
+<script>
+    function savePage1Data() {
+      localStorage.setItem("farmerName", document.getElementById("name").value);
+      localStorage.setItem("village", document.getElementById("village").value);
+      localStorage.setItem("adhar", document.querySelector('[name="adhar"]').value);
+      localStorage.setItem("acre", document.querySelector('[name="acre"]').value);
+      localStorage.setItem("taluka", document.querySelector('select').value);
+    }
+    window.onload = function() {
+      document.getElementById("img").addEventListener("change", function() {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            localStorage.setItem("farmerPhoto", e.target.result);
+          };
+          reader.readAsDataURL(file); 
+        }
+      });
+    };
+    const adharInput = document.getElementById('adhar');
+const errorMessage = document.getElementById('error-message');
+
+adharInput.addEventListener('input', function () {
+  if (!this.validity.valid) {
+    errorMessage.textContent = "Please enter exactly 10 digits.";
+  } else {
+    errorMessage.textContent = "";
+  }
+});
+    </script>
+    
+</body>
+</html>
